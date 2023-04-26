@@ -1,0 +1,16 @@
+.redes {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  width: 50px;
+}
+
+.logo-img {
+  max-width: 100%;
+}
+
+.nav-bar {
+  border-top: solid 1px black;
+  border-bottom: solid 1px black;
+  margin-bottom: 10px;
+}
