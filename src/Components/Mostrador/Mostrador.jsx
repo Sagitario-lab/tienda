@@ -1,9 +1,10 @@
-import { Card, Grid } from "@mui/material";
+import { Button, Card, Grid } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import NavBar from "../NavBar/NavBar";
 import "./Mostrador.css";
+import { Link } from "react-router-dom";
 
-const Mostrador = () => {
+const Mostrador = ({ itemsToBuy, setItemsToBuy, isLoggedIn }) => {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
@@ -12,26 +13,38 @@ const Mostrador = () => {
       .then((json) => {
         setItems(json);
       });
-
   }, []);
+
   return (
     <Grid container spacing={2} className='items'>
       <Grid item xs={12}>
-        <NavBar></NavBar>a
+        <NavBar></NavBar>
       </Grid>
       {items.map((item) => {
         return (
-          <>
-            <Grid item xs={12}>
-              <Card className='card'>
-                <img src={item.image} className='item'></img>
-                <div className='item-title'>{item.title}</div>
-                <div>${item.price} USD</div>
-              </Card>
-            </Grid>
-          </>
+          <Grid key={item.id} item xs={12} sm={7}>
+            <Card className='card'>
+              <img src={item.image} className='item'></img>
+              <div className='item-title'>{item.title}</div>
+              <div>${item.price} USD</div>
+
+              {isLoggedIn ? (
+                <Button
+                  variant='contained'
+                  onClick={() => {
+                    setItemsToBuy([
+                      ...itemsToBuy,
+                      { item: item.title, price: item.price },
+                    ]);
+                  }}
+                >
+                  ADD
+                </Button>
+              ) : null}
+            </Card>
+          </Grid>
         );
-      })}w
+      })}
     </Grid>
   );
 };

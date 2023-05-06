@@ -27,7 +27,7 @@ const NavBar = () => {
         <>
           {items.map((item) => {
             return (
-              <Link to={"/" + item} key={item} className='nav-link'>
+              <Link to={"/category/" + item} key={item} className='nav-link'>
                 {item}
               </Link>
             );

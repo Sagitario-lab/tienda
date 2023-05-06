@@ -1,7 +1,6 @@
 :root {
- 
-  display:flex ;
+  display: flex;
   align-items: center;
+  background-color: ;
   flex-direction: column;
-
 }
